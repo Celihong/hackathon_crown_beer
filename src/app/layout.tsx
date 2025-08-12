@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "My Awesome Next.js App",
+  title: "Crown Beer event",
   description: "A description of my awesome Next.js app.",
 };
 
