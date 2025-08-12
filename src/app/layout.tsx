@@ -1,10 +1,18 @@
 import "./globals.css";
-import Link from "next/link";
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google"; // Assuming you're using this font
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+// Initialize the font
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
-  title: "Cambodian Craft Beer Crown 2025",
-  description: "Vote for your favorite beer and explore the breweries.",
+  title: "My Awesome Next.js App",
+  description: "A description of my awesome Next.js app.",
 };
 
 export default function RootLayout({
@@ -14,43 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen bg-white text-gray-900">
-        {/* Header */}
-        <header className="bg-green-600 text-white shadow-md">
-          <div className="container mx-auto flex justify-between items-center p-4">
-            <h1 className="text-xl font-bold">
-              Cambodian Craft Beer Crown 2025
-            </h1>
-            <nav className="space-x-4">
-              <Link href="/" className="hover:underline">
-                Home
-              </Link>
-              <Link href="/breweries" className="hover:underline">
-                Breweries
-              </Link>
-              <Link href="/timetable" className="hover:underline">
-                Timetable
-              </Link>
-              <Link href="/awards" className="hover:underline">
-                Awards
-              </Link>
-              <Link
-                href="/vote"
-                className="bg-white text-green-600 font-semibold px-3 py-1 rounded hover:bg-gray-100"
-              >
-                Vote Now
-              </Link>
-            </nav>
-          </div>
-        </header>
-
-        {/* Main Content */}
+      <body className={`${poppins.className} flex flex-col min-h-screen bg-amber-50 text-gray-900`}>
+        <Header />
         <main className="flex-1 container mx-auto p-4">{children}</main>
-
-        {/* Footer */}
-        <footer className="bg-gray-800 text-white text-center py-4 mt-6">
-          © 2025 Cambodian Craft Beer Association
-        </footer>
+        <Footer />
       </body>
     </html>
   );
