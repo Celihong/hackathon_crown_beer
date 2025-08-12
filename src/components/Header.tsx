@@ -8,7 +8,7 @@ export default function Header() {
           Cambodian Craft Beer Crown 2025
         </Link>
         <nav className="space-x-4">
-          <Link href="/" className="hover:underline">
+          <Link href="/" className="hover:underline ">
             Home
           </Link>
           <Link href="/breweries" className="hover:underline">
