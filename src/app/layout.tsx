@@ -14,9 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen bg-amber-50 text-gray-900">
+      <body className="flex flex-col min-h-screen bg-white text-gray-900">
         {/* Header */}
-        <header className="bg-amber-600 text-white shadow-md">
+        <header className="bg-green-600 text-white shadow-md">
           <div className="container mx-auto flex justify-between items-center p-4">
             <h1 className="text-xl font-bold">
               Cambodian Craft Beer Crown 2025
@@ -36,7 +36,7 @@ export default function RootLayout({
               </Link>
               <Link
                 href="/vote"
-                className="bg-white text-amber-600 font-semibold px-3 py-1 rounded hover:bg-gray-100"
+                className="bg-white text-green-600 font-semibold px-3 py-1 rounded hover:bg-gray-100"
               >
                 Vote Now
               </Link>
