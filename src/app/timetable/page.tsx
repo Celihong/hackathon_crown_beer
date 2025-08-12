@@ -1,59 +1,55 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { Music, Clock, Award, Calendar, Users } from "lucide-react";
 
-export default function EventTimeTable() {
-  const items = [
-    { time: "2:00 PM", title: "Event begins", icon: Clock },
-    { time: "3:15 PM", title: "MC Introduction", icon: Users },
-    { time: "3:30 – 6:30 PM", title: "DJ Wha-Wah", icon: Music },
-    { time: "6:40 PM", title: "Blind tasting live session", icon: Award },
-    { time: "7:30 PM", title: "Award ceremony", icon: Award },
-    {
-      time: "8:30 – 11:00 PM",
-      title: "Live music by The Broken Cymbal",
-      icon: Music,
-    },
-    { time: "11:30 PM", title: "Event ends", icon: Calendar },
-  ];
+const items = [
+  { time: "2:00 PM", title: "Event begins", icon: Clock },
+  { time: "3:15 PM", title: "Introduction by the MC", icon: Users },
+  { time: "3:30 PM", title: "DJ Wha-Wah (until 6:30 PM)", icon: Music },
+  { time: "6:40 PM", title: "Blind tasting live session", icon: Award },
+  { time: "7:30 PM", title: "Start award ceremony", icon: Award },
+  {
+    time: "8:30 PM",
+    title: "Live music by The Broken Cymbal (until 11:00 PM)",
+    icon: Music,
+  },
+  { time: "11:30 PM", title: "Event ends", icon: Calendar },
+];
 
+export default function EventTimeLine() {
   return (
-    <section className="max-w-3xl mx-auto p-6 sm:p-8">
-      <h2 className="text-3xl font-extrabold mb-8 text-center text-lime-700">
+    <>
+      <h1 className="text-3xl font-bold text-center text-green-500">
         Event Schedule
-      </h2>
-      <ol className="space-y-8">
-        {items.map((item, idx) => {
-          const Icon = item.icon;
-          return (
-            <motion.li
-              key={item.time + idx}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.07 }}
-              className="flex items-center gap-4 bg-white shadow-md rounded-lg p-4 sm:p-6 hover:shadow-xl transition-shadow cursor-default"
-            >
-              {/* Icon box near text */}
-              <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-tr from-lime-400 to-green-600 text-white shadow-md flex-shrink-0">
-                <Icon className="h-6 w-6" />
-              </div>
+      </h1>
+      <section className="max-w-3xl mx-auto p-6 sm:p-8">
+        <ol className="relative border-l-2 border-l-green-400">
+          {items.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <li key={item.time + idx} className="mb-8 ml-6 last:mb-0">
+                {/* Circle with icon */}
+                <span className="absolute -left-4 flex h-10 w-10 items-center justify-center rounded-full bg-green-400 ring-4 ring-white text-white shadow-md">
+                  <Icon className="h-6 w-6" />
+                </span>
 
-              {/* Text content */}
-              <div className="flex-1 flex justify-between items-center min-w-0">
-                <p className="text-lg font-semibold text-gray-900 truncate">
-                  {item.title}
-                </p>
-                <time className="ml-4 text-sm font-mono text-lime-700 whitespace-nowrap  ">
-                  {item.time}
-                </time>
-              </div>
-            </motion.li>
-          );
-        })}
-      </ol>
-    </section>
+                {/* Card */}
+                <div className="rounded-md border border-green-200 bg-green-50 p-5 shadow-sm hover:shadow-lg transition-shadow duration-300 ml-5">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                    <h3 className="text-gray-900 font-semibold text-lg tracking-wide mb-1 sm:mb-0">
+                      {item.title}
+                    </h3>
+                    <time className="text-green-700 font-mono text-sm font-medium self-end sm:self-center">
+                      {item.time}
+                    </time>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    </>
   );
 }
