@@ -53,7 +53,7 @@ export default function EventTimeLine() {
                         )}
                       </h3>
                     </div>
-                    <time className="text-green-700 font-mono text-sm font-medium self-end sm:self-center mt-1 sm:mt-0">
+                    <time className="text-green-700 font-mono text-sm font-semibold self-end sm:self-center mt-1 sm:mt-0">
                       {item.time}
                     </time>
                   </div>
