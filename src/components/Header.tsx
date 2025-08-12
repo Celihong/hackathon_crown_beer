@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation"; // <-- import this
 import {
   Menu,
   X,
@@ -19,6 +20,7 @@ import Logo from "@/images/logo.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // get current path
 
   const closeMenu = () => setIsOpen(false);
 
@@ -45,40 +47,52 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex space-x-6 text-md text-[#1B4332] font-medium">
-          {navItems.map(({ name, href, icon: Icon }) => (
-            <Link
-              key={name}
-              href={href}
-              className="flex items-center space-x-2 relative group transition"
-            >
-              <Icon
-                size={18}
-                className="text-[#1B4332] group-hover:text-[#40916C] transition duration-200"
-              />
-              <span
-                className="group-hover:text-[#40916C] transition duration-200
+        <nav className="hidden md:flex space-x-6 text-md font-medium">
+          {navItems.map(({ name, href, icon: Icon }) => {
+            const isActive = pathname === href;
+            return (
+              <Link
+                key={name}
+                href={href}
+                className={`flex items-center space-x-2 relative group transition
+                  ${isActive ? "text-green-700" : "text-[#1B4332]"}
+                `}
+              >
+                <Icon
+                  size={18}
+                  className={`${isActive ? "text-green-700" : "text-[#1B4332]"} group-hover:text-[#40916C] transition duration-200`}
+                />
+                <span
+                  className={`${
+                    isActive ? "text-green-700 font-semibold" : "group-hover:text-[#40916C]"
+                  } transition duration-200
                   after:content-[''] after:absolute after:w-0 after:h-[2px]
                   after:bg-[#FFD166] after:left-0 after:bottom-[-4px]
-                  group-hover:after:w-full after:transition-all after:duration-300"
-              >
-                {name}
-              </span>
-            </Link>
-          ))}
+                  group-hover:after:w-full after:transition-all after:duration-300`}
+                >
+                  {name}
+                </span>
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Desktop Vote button */}
         <Link
           href="/vote"
-          className="hidden md:flex items-center space-x-2 font-semibold 
-                     bg-yellow-600 text-white font-semibold  px-5 py-2.5 rounded-full
-                     shadow-md hover:shadow-lg transform hover:scale-105 hover:from-[#2D6A4F] hover:to-[#1B4332]
-                     transition-all duration-300 ease-out group"
+          className={`hidden md:flex items-center space-x-2 font-semibold px-5 py-2.5 rounded-full shadow-md transition-all duration-300 ease-out transform hover:scale-105
+            ${
+              pathname === "/vote"
+                ? "bg-green-700 text-white hover:bg-green-800 shadow-lg"
+                : "bg-yellow-600 text-white hover:shadow-lg hover:from-[#2D6A4F] hover:to-[#1B4332]"
+            }
+          `}
         >
           <Vote
             size={18}
-            className="transition-transform duration-300 group-hover:translate-x-1"
+            className={`transition-transform duration-300 ${
+              pathname === "/vote" ? "group-hover:translate-x-1" : "group-hover:translate-x-1"
+            }`}
           />
           <span>Vote</span>
         </Link>
@@ -123,21 +137,24 @@ export default function Header() {
           <nav className="mt-6 flex flex-col space-y-6 px-6 text-lg font-medium">
             {navItems
               .concat({ name: "Vote", href: "/vote", icon: Vote })
-              .map(({ name, href, icon: Icon }) => (
-                <Link
-                  key={name}
-                  href={href}
-                  onClick={closeMenu}
-                  className={`flex items-center space-x-3 transition duration-200 ${
-                    name === "Vote"
-                      ? "bg-gradient-to-r from-[#40916C] to-[#2D6A4F] text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg hover:scale-105 hover:from-[#2D6A4F] hover:to-[#1B4332] transform ease-out"
-                      : "hover:text-[#40916C]"
-                  }`}
-                >
-                  <Icon size={20} />
-                  <span>{name}</span>
-                </Link>
-              ))}
+              .map(({ name, href, icon: Icon }) => {
+                const isActive = pathname === href;
+                return (
+                  <Link
+                    key={name}
+                    href={href}
+                    onClick={closeMenu}
+                    className={`flex items-center space-x-3 transition duration-200 ${
+                      isActive
+                        ? "bg-gradient-to-r from-[#40916C] to-[#2D6A4F] text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg hover:scale-105 transform ease-out"
+                        : "hover:text-[#40916C]"
+                    }`}
+                  >
+                    <Icon size={20} />
+                    <span>{name}</span>
+                  </Link>
+                );
+              })}
           </nav>
 
           {/* Social icons */}
