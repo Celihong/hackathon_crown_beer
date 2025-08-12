@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function QuickLinkBar() {
   return (
@@ -8,7 +9,7 @@ export default function QuickLinkBar() {
         <div className="font-semibold">Voting / Judging Sheet</div>
       </div>
       <div className="flex items-center gap-4">
-        <img src="/qr.png" alt="QR" width={96} height={96} />
+        <Image src="/qr.png" alt="QR" width={96} height={96} />
         <Link href="/vote" className="bg-black text-white px-4 py-2 rounded">
           Open Vote
         </Link>
