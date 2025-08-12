@@ -72,7 +72,7 @@ export default function Header() {
         <Link
           href="/vote"
           className="hidden md:flex items-center space-x-2 font-semibold 
-                     bg-yellow-600 text-white font-semibold  px-5 py-2.5 rounded-full
+                     bg-yellow-600 text-white  px-5 py-2.5 rounded-full
                      shadow-md hover:shadow-lg transform hover:scale-105 hover:from-[#2D6A4F] hover:to-[#1B4332]
                      transition-all duration-300 ease-out group"
         >
