@@ -13,7 +13,8 @@ export default function HomePage() {
             "url('https://upload.wikimedia.org/wikipedia/commons/6/69/Beer_glasses.jpg')",
         }}
       >
-        <div className="absolute inset-0 bg-[#fcfcfa]/80 backdrop-blur-[2px]" />
+        {/* Overlay for better text contrast */}
+        <div className="absolute inset-0 bg-white/70 backdrop-blur-md" />
       </div>
 
       {/* Content */}
@@ -33,7 +34,7 @@ export default function HomePage() {
               </p>
 
               {/* Event Details */}
-              <div className="bg-white/90 rounded-xl shadow-lg p-6 flex flex-col gap-4 max-w-md transition-transform hover:scale-[1.02] hover:shadow-xl duration-300">
+              <div className="bg-green-100 rounded-xl shadow-lg p-6 flex flex-col gap-4 max-w-md transition-transform hover:scale-[1.02] hover:shadow-xl duration-300">
                 <div className="flex items-center gap-3 text-[#2d241b]">
                   <span className="text-green-600 text-2xl animate-bounce">📅</span>
                   <span className="font-semibold">August 16, 2025</span>
