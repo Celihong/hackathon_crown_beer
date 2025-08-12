@@ -121,8 +121,9 @@ export default function Header() {
 
           {/* Mobile nav */}
           <nav className="mt-6 flex flex-col space-y-6 px-6 text-lg font-medium">
-            {navItems.concat({ name: "Vote", href: "/vote", icon: Vote }).map(
-              ({ name, href, icon: Icon }) => (
+            {navItems
+              .concat({ name: "Vote", href: "/vote", icon: Vote })
+              .map(({ name, href, icon: Icon }) => (
                 <Link
                   key={name}
                   href={href}
@@ -136,8 +137,7 @@ export default function Header() {
                   <Icon size={20} />
                   <span>{name}</span>
                 </Link>
-              )
-            )}
+              ))}
           </nav>
 
           {/* Social icons */}
