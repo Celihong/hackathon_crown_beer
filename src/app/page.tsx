@@ -1,77 +1,138 @@
+"use client";
+
 import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <section className="text-center space-y-6">
-      <h2 className="text-3xl font-bold text-amber-700">
-        Welcome to the Cambodian Craft Beer Crown 2025!
-      </h2>
-      <p className="max-w-2xl mx-auto text-lg text-gray-700">
-        Join us on <strong>16th August 2025</strong> from{" "}
-        <strong>2:00 PM – 11:30 PM</strong> at{" "}
-        <strong>Botanico Craft Beer Garden</strong>, Street 29. Experience
-        Cambodia’s finest craft beers, meet the brewers, enjoy live music, and
-        cast your vote for the People’s Choice Award!
-      </p>
-
-      {/* Quick voting link */}
-      <div className="mt-6">
-        <Link
-          href="/vote"
-          className="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow hover:bg-amber-700"
-        >
-          Start Voting 🍺
-        </Link>
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Full Page Background */}
+      <div
+        className="fixed inset-0 -z-10 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage:
+            "url('https://upload.wikimedia.org/wikipedia/commons/6/69/Beer_glasses.jpg')",
+        }}
+      >
+        <div className="absolute inset-0 bg-[#fcfcfa]/80 backdrop-blur-[2px]" />
       </div>
 
-      {/* Event Highlights */}
-      <div className="grid md:grid-cols-3 gap-6 mt-10">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-xl font-bold text-amber-600 mb-2">
-            Meet the Breweries
-          </h3>
-          <p>
-            Discover 11 incredible breweries from across Cambodia and learn
-            their unique stories.
-          </p>
-          <Link
-            href="/breweries"
-            className="text-amber-600 font-semibold hover:underline"
-          >
-            Learn More →
-          </Link>
-        </div>
+      {/* Content */}
+      <main className="relative z-10 flex flex-col items-center py-8 px-4 animate-fadeIn">
+        {/* Hero Section */}
+        <section className="w-full max-w-6xl relative rounded-2xl overflow-hidden shadow-xl min-h-[420px] flex items-center justify-center mb-12 animate-slideUp delay-100">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/50 to-transparent z-10 backdrop-blur-sm" />
+          <div className="relative z-20 w-full flex flex-col md:flex-row items-center gap-10 md:gap-16 p-6 md:p-12">
+            <div className="flex-1 space-y-6">
+              <h1 className="text-4xl md:text-5xl font-extrabold text-[#2d241b] leading-tight drop-shadow-lg">
+                Cambodian Craft Beer <br />
+                <span className="text-green-600">Crown 2025</span>
+              </h1>
+              <p className="text-lg md:text-xl text-[#4b463e] drop-shadow">
+                Join us for Cambodia&apos;s premier craft beer competition featuring{" "}
+                <span className="font-semibold text-green-700">11 exceptional breweries</span> competing for the crown.
+              </p>
 
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-xl font-bold text-amber-600 mb-2">
-            Event Timetable
-          </h3>
-          <p>
-            Check out the live music, DJ sets, and award ceremonies scheduled
-            throughout the day.
-          </p>
-          <Link
-            href="/timetable"
-            className="text-amber-600 font-semibold hover:underline"
-          >
-            View Schedule →
-          </Link>
-        </div>
+              {/* Event Details */}
+              <div className="bg-white/90 rounded-xl shadow-lg p-6 flex flex-col gap-4 max-w-md transition-transform hover:scale-[1.02] hover:shadow-xl duration-300">
+                <div className="flex items-center gap-3 text-[#2d241b]">
+                  <span className="text-green-600 text-2xl animate-bounce">📅</span>
+                  <span className="font-semibold">August 16, 2025</span>
+                </div>
+                <div className="flex items-center gap-3 text-[#2d241b]">
+                  <span className="text-green-600 text-2xl animate-pulse">⏰</span>
+                  <span>2:00 PM – 11:30 PM</span>
+                </div>
+                <div className="flex items-center gap-3 text-[#2d241b]">
+                  <span className="text-green-600 text-2xl">📍</span>
+                  <div>
+                    <span className="font-semibold">Botanico Craft Beer Garden</span>
+                    <div className="text-sm text-gray-500">Street 29, Phnom Penh</div>
+                  </div>
+                </div>
+              </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-xl font-bold text-amber-600 mb-2">Awards</h3>
-          <p>
-            Learn about the Main Award, People’s Choice Award, and Brewer’s
-            Choice Award.
-          </p>
-          <Link
-            href="/awards"
-            className="text-amber-600 font-semibold hover:underline"
-          >
-            See Awards →
-          </Link>
-        </div>
-      </div>
-    </section>
+              {/* CTA */}
+              <div className="flex gap-4 mt-2 flex-wrap">
+                <Link
+                  href="/vote"
+                  className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105"
+                >
+                  🍺 VOTE NOW
+                </Link>
+                <a
+                  href="https://maps.app.goo.gl/onsMN6tG4baUGj4S9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white border border-green-600 text-green-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-green-50 transition-transform hover:scale-105"
+                >
+                  📍 View Location
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Event Highlights */}
+        <section className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Meet the Breweries",
+              text: "Discover 11 incredible breweries from across Cambodia and learn their unique stories.",
+              link: "/breweries",
+            },
+            {
+              title: "Event Timetable",
+              text: "Check out the live music, DJ sets, and award ceremonies scheduled throughout the day.",
+              link: "/timetable",
+            },
+            {
+              title: "Awards",
+              text: "Learn about the Main Award, People’s Choice Award, and Brewer’s Choice Award.",
+              link: "/awards",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="bg-white/90 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform hover:scale-105 duration-300 backdrop-blur-sm animate-slideUp"
+              style={{ animationDelay: `${(i + 1) * 150}ms` }}
+            >
+              <h3 className="text-xl font-bold text-green-700 mb-2">{item.title}</h3>
+              <p className="mb-3 text-[#4b463e]">{item.text}</p>
+              <Link href={item.link} className="text-green-700 font-semibold hover:underline">
+                Learn More →
+              </Link>
+            </div>
+          ))}
+        </section>
+      </main>
+
+      {/* Animations */}
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease-out forwards;
+        }
+        .animate-slideUp {
+          animation: slideUp 0.8s ease-out forwards;
+        }
+      `}</style>
+    </div>
   );
 }
