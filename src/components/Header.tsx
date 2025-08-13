@@ -16,8 +16,9 @@ import {
   Award,
   Vote,
 } from "lucide-react";
+
 import Logo1 from "@/images/logo.png";
-import Logo2 from "@/images/logo.png";
+import Logo2 from "@/images/logo2.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,42 +39,8 @@ export default function Header() {
   return (
     <header className="bg-[#F8F9FA] font-inter text-[#212529] shadow-md">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        {/* Mobile menu button on left */}
-        <button
-          className="md:hidden p-2 rounded bg-[#40916C] hover:bg-[#1B4332] text-white transition w-10 h-10 flex items-center justify-center"
-          onClick={() => setIsOpen(true)}
-          aria-label="Open Menu"
-          type="button"
-        >
-          <Menu size={24} />
-        </button>
-
-        {/* Desktop left logos */}
-        <div className="hidden md:flex space-x-3">
-          <Link href="/" className="flex items-center">
-            <Image
-              src={Logo1}
-              alt="Logo 1"
-              width={40}
-              height={40}
-              priority
-              className="w-auto h-15"
-            />
-          </Link>
-          <Link href="/" className="flex items-center">
-            <Image
-              src={Logo2}
-              alt="Logo 2"
-              width={40}
-              height={40}
-              priority
-              className="w-auto h-15"
-            />
-          </Link>
-        </div>
-
-        {/* Mobile right logos */}
-        <div className="flex space-x-3 md:hidden ml-auto">
+        {/* Logos on the left */}
+        <div className="flex items-center space-x-4">
           <Link href="/" className="flex items-center">
             <Image
               src={Logo1}
@@ -137,11 +104,21 @@ export default function Header() {
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:flex items-center space-x-2 font-semibold px-5 py-2.5 rounded-full shadow-md transition-all duration-300 ease-out transform hover:scale-105
-            bg-yellow-600 text-white hover:shadow-lg hover:from-[#2D6A4F] hover:to-[#1B4332]"
+            bg-yellow-600 text-white hover:shadow-lg"
         >
           <Vote size={18} />
           <span>Vote</span>
         </a>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden p-2 rounded bg-[#40916C] hover:bg-[#1B4332] text-white transition w-10 h-10 flex items-center justify-center"
+          onClick={() => setIsOpen(true)}
+          aria-label="Open Menu"
+          type="button"
+        >
+          <Menu size={24} />
+        </button>
       </div>
 
       {/* Mobile menu overlay */}
