@@ -39,31 +39,27 @@ export default function Header() {
   return (
     <header className="bg-[#F8F9FA] font-inter text-[#212529] shadow-md">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        {/* Logos on the left */}
-        <div className="flex items-center space-x-4">
+        {/* Mobile menu button on left */}
+        <button
+          className="md:hidden p-2 rounded bg-[#40916C] hover:bg-[#1B4332] text-white transition w-10 h-10 flex items-center justify-center"
+          onClick={() => setIsOpen(true)}
+          aria-label="Open Menu"
+          type="button"
+        >
+          <Menu size={24} />
+        </button>
+
+        {/* Desktop logos on left */}
+        <div className="hidden md:flex items-center space-x-4">
           <Link href="/" className="flex items-center">
-            <Image
-              src={Logo1}
-              alt="Logo 1"
-              width={40}
-              height={40}
-              priority
-              className="w-auto h-15"
-            />
+            <Image src={Logo1} alt="Logo 1" width={40} height={40} className="w-auto h-15" />
           </Link>
           <Link href="/" className="flex items-center">
-            <Image
-              src={Logo2}
-              alt="Logo 2"
-              width={40}
-              height={40}
-              priority
-              className="w-auto h-15"
-            />
+            <Image src={Logo2} alt="Logo 2" width={40} height={40} className="w-auto h-15" />
           </Link>
         </div>
 
-        {/* Desktop navigation menu */}
+        {/* Desktop nav */}
         <nav className="hidden md:flex space-x-6 text-md font-medium">
           {navItems.map(({ name, href, icon: Icon }) => {
             const isActive = pathname === href;
@@ -71,9 +67,9 @@ export default function Header() {
               <Link
                 key={name}
                 href={href}
-                className={`flex items-center space-x-2 relative group transition
-                  ${isActive ? "text-green-700" : "text-[#1B4332]"}
-                `}
+                className={`flex items-center space-x-2 relative group transition ${
+                  isActive ? "text-green-700" : "text-[#1B4332]"
+                }`}
               >
                 <Icon
                   size={18}
@@ -83,9 +79,7 @@ export default function Header() {
                 />
                 <span
                   className={`${
-                    isActive
-                      ? "text-green-700 font-semibold"
-                      : "group-hover:text-[#40916C]"
+                    isActive ? "text-green-700 font-semibold" : "group-hover:text-[#40916C]"
                   } transition duration-200
                   after:content-[''] after:absolute after:w-0 after:h-[2px]
                   after:bg-[#FFD166] after:left-0 after:bottom-[-4px]
@@ -110,15 +104,15 @@ export default function Header() {
           <span>Vote</span>
         </a>
 
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden p-2 rounded bg-[#40916C] hover:bg-[#1B4332] text-white transition w-10 h-10 flex items-center justify-center"
-          onClick={() => setIsOpen(true)}
-          aria-label="Open Menu"
-          type="button"
-        >
-          <Menu size={24} />
-        </button>
+        {/* Mobile logos on right */}
+        <div className="flex md:hidden items-center space-x-3">
+          <Link href="/" className="flex items-center">
+            <Image src={Logo1} alt="Logo 1" width={40} height={40} className="w-auto h-15" />
+          </Link>
+          <Link href="/" className="flex items-center">
+            <Image src={Logo2} alt="Logo 2" width={40} height={40} className="w-auto h-15" />
+          </Link>
+        </div>
       </div>
 
       {/* Mobile menu overlay */}
@@ -183,11 +177,7 @@ export default function Header() {
           {/* Social icons */}
           <div className="mt-auto flex justify-center space-x-6 p-6">
             {[Linkedin, Github, Globe].map((Icon, i) => (
-              <Link
-                key={i}
-                href="#"
-                className="hover:text-[#40916C] transition duration-200"
-              >
+              <Link key={i} href="#" className="hover:text-[#40916C] transition duration-200">
                 <Icon size={22} />
               </Link>
             ))}
