@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Logo1 from "@/images/logo.png"
+import Logo2 from "@/images/logo2.png"
 import {
   Menu,
   X,
@@ -15,7 +17,7 @@ import {
   Award,
   Vote,
 } from "lucide-react";
-import Logo from "@/images/logo.png";
+
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,17 +34,29 @@ export default function Header() {
   return (
     <header className="bg-[#F8F9FA] font-inter text-[#212529] shadow-md">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src={Logo}
-            alt="Logo"
-            width={40}
-            height={40}
-            priority
-            className="w-auto h-15"
-          />
-        </Link>
+        {/* Logos */}
+        <div className="flex items-center space-x-4">
+          <Link href="/" className="flex items-center">
+            <Image
+              src={Logo1}
+              alt="Logo 1"
+              width={40}
+              height={40}
+              priority
+              className="w-auto h-15"
+            />
+          </Link>
+          <Link href="/" className="flex items-center">
+            <Image
+              src={Logo2}
+              alt="Logo 2"
+              width={40}
+              height={40}
+              priority
+              className="w-auto h-15"
+            />
+          </Link>
+        </div>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex space-x-6 text-md text-[#1B4332] font-medium">
