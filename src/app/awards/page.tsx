@@ -1,5 +1,4 @@
 import { Crown, Users, Gift, Medal } from "lucide-react";
-import Link from "next/link";
 
 export default function AwardsPage() {
   const awards = [

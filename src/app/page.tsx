@@ -13,7 +13,8 @@ export default function HomePage() {
             "url('https://upload.wikimedia.org/wikipedia/commons/6/69/Beer_glasses.jpg')",
         }}
       >
-        <div className="absolute inset-0 bg-[#fcfcfa]/80 backdrop-blur-[2px]" />
+        {/* Overlay for better text contrast */}
+        <div className="absolute inset-0 bg-white/70 backdrop-blur-md" />
       </div>
 
       {/* Content */}
@@ -33,7 +34,7 @@ export default function HomePage() {
               </p>
 
               {/* Event Details */}
-              <div className="bg-white/90 rounded-xl shadow-lg p-6 flex flex-col gap-4 max-w-md transition-transform hover:scale-[1.02] hover:shadow-xl duration-300">
+              <div className="bg-green-100 rounded-xl shadow-lg p-6 flex flex-col gap-4 max-w-md transition-transform hover:scale-[1.02] hover:shadow-xl duration-300">
                 <div className="flex items-center gap-3 text-[#2d241b]">
                   <span className="text-green-600 text-2xl animate-bounce">📅</span>
                   <span className="font-semibold">August 16, 2025</span>
@@ -53,19 +54,13 @@ export default function HomePage() {
 
               {/* CTA */}
               <div className="flex gap-4 mt-2 flex-wrap">
-                <Link
-                  href="/vote"
+                <a
+                  href="https://forms.gle/LPZFNjGQymjVju8B8"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105"
                 >
                   🍺 VOTE NOW
-                </Link>
-                <a
-                  href="https://maps.app.goo.gl/onsMN6tG4baUGj4S9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white border border-green-600 text-green-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-green-50 transition-transform hover:scale-105"
-                >
-                  📍 View Location
                 </a>
               </div>
             </div>
