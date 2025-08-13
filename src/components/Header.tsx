@@ -3,8 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Logo1 from "@/images/logo.png"
-import Logo2 from "@/images/logo2.png"
+import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
@@ -18,9 +17,12 @@ import {
   Vote,
 } from "lucide-react";
 
+import Logo1 from "@/images/logo.png";
+import Logo2 from "@/images/logo2.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const closeMenu = () => setIsOpen(false);
 
@@ -29,12 +31,15 @@ export default function Header() {
     { name: "Breweries", href: "/breweries", icon: Beer },
     { name: "Schedule", href: "/schedule", icon: Calendar },
     { name: "Awards", href: "/awards", icon: Award },
+    { name: "Sponsor", href: "/sponsors", icon: Globe },
   ];
+
+  const voteFormUrl = "https://forms.gle/LPZFNjGQymjVju8B8";
 
   return (
     <header className="bg-[#F8F9FA] font-inter text-[#212529] shadow-md">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        {/* Logos */}
+        {/* Logos on the left */}
         <div className="flex items-center space-x-4">
           <Link href="/" className="flex items-center">
             <Image
@@ -58,44 +63,52 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex space-x-6 text-md text-[#1B4332] font-medium">
-          {navItems.map(({ name, href, icon: Icon }) => (
-            <Link
-              key={name}
-              href={href}
-              className="flex items-center space-x-2 relative group transition"
-            >
-              <Icon
-                size={18}
-                className="text-[#1B4332] group-hover:text-[#40916C] transition duration-200"
-              />
-              <span
-                className="group-hover:text-[#40916C] transition duration-200
+        {/* Desktop navigation menu */}
+        <nav className="hidden md:flex space-x-6 text-md font-medium">
+          {navItems.map(({ name, href, icon: Icon }) => {
+            const isActive = pathname === href;
+            return (
+              <Link
+                key={name}
+                href={href}
+                className={`flex items-center space-x-2 relative group transition
+                  ${isActive ? "text-green-700" : "text-[#1B4332]"}
+                `}
+              >
+                <Icon
+                  size={18}
+                  className={`${
+                    isActive ? "text-green-700" : "text-[#1B4332]"
+                  } group-hover:text-[#40916C] transition duration-200`}
+                />
+                <span
+                  className={`${
+                    isActive
+                      ? "text-green-700 font-semibold"
+                      : "group-hover:text-[#40916C]"
+                  } transition duration-200
                   after:content-[''] after:absolute after:w-0 after:h-[2px]
                   after:bg-[#FFD166] after:left-0 after:bottom-[-4px]
-                  group-hover:after:w-full after:transition-all after:duration-300"
-              >
-                {name}
-              </span>
-            </Link>
-          ))}
+                  group-hover:after:w-full after:transition-all after:duration-300`}
+                >
+                  {name}
+                </span>
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Desktop Vote button */}
-        <Link
-          href="/vote"
-          className="hidden md:flex items-center space-x-2 font-semibold 
-                     bg-yellow-600 text-white font-semibold  px-5 py-2.5 rounded-full
-                     shadow-md hover:shadow-lg transform hover:scale-105 hover:from-[#2D6A4F] hover:to-[#1B4332]
-                     transition-all duration-300 ease-out group"
+        <a
+          href={voteFormUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden md:flex items-center space-x-2 font-semibold px-5 py-2.5 rounded-full shadow-md transition-all duration-300 ease-out transform hover:scale-105
+            bg-yellow-600 text-white hover:shadow-lg"
         >
-          <Vote
-            size={18}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
+          <Vote size={18} />
           <span>Vote</span>
-        </Link>
+        </a>
 
         {/* Mobile menu button */}
         <button
@@ -135,23 +148,36 @@ export default function Header() {
 
           {/* Mobile nav */}
           <nav className="mt-6 flex flex-col space-y-6 px-6 text-lg font-medium">
-            {navItems
-              .concat({ name: "Vote", href: "/vote", icon: Vote })
-              .map(({ name, href, icon: Icon }) => (
+            {navItems.map(({ name, href, icon: Icon }) => {
+              const isActive = pathname === href;
+              return (
                 <Link
                   key={name}
                   href={href}
                   onClick={closeMenu}
                   className={`flex items-center space-x-3 transition duration-200 ${
-                    name === "Vote"
-                      ? "bg-gradient-to-r from-[#40916C] to-[#2D6A4F] text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg hover:scale-105 hover:from-[#2D6A4F] hover:to-[#1B4332] transform ease-out"
+                    isActive
+                      ? "bg-gradient-to-r from-[#40916C] to-[#2D6A4F] text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg hover:scale-105 transform ease-out"
                       : "hover:text-[#40916C]"
                   }`}
                 >
                   <Icon size={20} />
                   <span>{name}</span>
                 </Link>
-              ))}
+              );
+            })}
+
+            {/* Mobile Vote button */}
+            <a
+              href={voteFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="flex items-center space-x-3 px-4 py-2 rounded-full bg-yellow-600 text-white font-semibold shadow-md hover:shadow-lg hover:scale-105 transition transform ease-out"
+            >
+              <Vote size={20} />
+              <span>Vote</span>
+            </a>
           </nav>
 
           {/* Social icons */}

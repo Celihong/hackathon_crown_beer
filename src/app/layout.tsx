@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google"; // Assuming you're using this font
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Image from "next/image";
+import Link from "next/link";     
 
 // Initialize the font
 const poppins = Poppins({
@@ -11,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "My Awesome Next.js App",
+  title: "Cambodian Craft Beer Crown 2025",
   description: "A description of my awesome Next.js app.",
 };
 
