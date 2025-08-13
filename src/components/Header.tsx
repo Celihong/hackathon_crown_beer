@@ -37,7 +37,7 @@ export default function Header() {
   const voteFormUrl = "https://forms.gle/LPZFNjGQymjVju8B8";
 
   return (
-    <header className="bg-[#F8F9FA] font-inter text-[#212529] shadow-md">
+    <header className="sticky top-0 z-50 bg-[#F8F9FA] font-inter text-[#212529] shadow-md">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         {/* Mobile menu button on left */}
         <button
@@ -59,7 +59,7 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Desktop nav */}
+        {/* Desktop navigation menu */}
         <nav className="hidden md:flex space-x-6 text-md font-medium">
           {navItems.map(({ name, href, icon: Icon }) => {
             const isActive = pathname === href;
