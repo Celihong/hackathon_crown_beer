@@ -20,7 +20,7 @@ const items = [
 export default function EventTimeLine() {
   return (
     <>
-      <h1 className="text-3xl font-bold text-center text-green-500">
+      <h1 className="text-3xl font-bold text-center text-green-500 mb-8">
         Event Schedule
       </h1>
       <section className="max-w-3xl mx-auto p-6 sm:p-8">
@@ -30,7 +30,7 @@ export default function EventTimeLine() {
             return (
               <li key={item.time + idx} className="mb-8 ml-6 last:mb-0">
                 {/* Circle with icon */}
-                <span className="absolute -left-4 flex h-10 w-10 items-center justify-center rounded-full bg-green-400 ring-4 ring-white text-white shadow-md">
+                <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-green-400 ring-4 ring-white text-white shadow-md">
                   <Icon className="h-6 w-6" />
                 </span>
 
