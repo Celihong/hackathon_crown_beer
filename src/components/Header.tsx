@@ -16,7 +16,8 @@ import {
   Award,
   Vote,
 } from "lucide-react";
-import Logo from "@/images/logo.png";
+import Logo1 from "@/images/logo.png";
+import Logo2 from "@/images/logo.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +38,7 @@ export default function Header() {
   return (
     <header className="bg-[#F8F9FA] font-inter text-[#212529] shadow-md">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        {/* Left side: menu button (mobile only) */}
+        {/* Mobile menu button on left */}
         <button
           className="md:hidden p-2 rounded bg-[#40916C] hover:bg-[#1B4332] text-white transition w-10 h-10 flex items-center justify-center"
           onClick={() => setIsOpen(true)}
@@ -51,7 +52,7 @@ export default function Header() {
         <div className="hidden md:flex space-x-3">
           <Link href="/" className="flex items-center">
             <Image
-              src={Logo}
+              src={Logo1}
               alt="Logo 1"
               width={40}
               height={40}
@@ -61,7 +62,7 @@ export default function Header() {
           </Link>
           <Link href="/" className="flex items-center">
             <Image
-              src={Logo}
+              src={Logo2}
               alt="Logo 2"
               width={40}
               height={40}
@@ -75,7 +76,7 @@ export default function Header() {
         <div className="flex space-x-3 md:hidden ml-auto">
           <Link href="/" className="flex items-center">
             <Image
-              src={Logo}
+              src={Logo1}
               alt="Logo 1"
               width={40}
               height={40}
@@ -85,7 +86,7 @@ export default function Header() {
           </Link>
           <Link href="/" className="flex items-center">
             <Image
-              src={Logo}
+              src={Logo2}
               alt="Logo 2"
               width={40}
               height={40}
