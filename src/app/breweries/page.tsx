@@ -9,77 +9,77 @@ const breweries = [
     description:
       "Serving handcrafted small batch beers in a welcoming atmosphere since 2021.",
     image: "/images/sakpub.png",
-    location: { lat: 11.5584, lng: 104.9282 },
+    mapUrl: "https://maps.app.goo.gl/VGkZoR5f79XSMmqS9?g_st=com.google.maps.preview.copy",
   },
   {
     name: "Project Brews",
     description:
       "A Kampot-based microbrewery making modern hoppy beers since 2020.",
     image: "/images/projectbrews.png",
-    location: { lat: 10.611, lng: 104.1815 },
+    mapUrl: "https://maps.app.goo.gl/v8cwyxUo3nMmysmD6?g_st=com.google.maps.preview.copy",
   },
   {
     name: "Black Bamboo",
     description:
       "First island craft brewery in Cambodia, located on Silk Island with river views.",
     image: "/images/Blackbamboo.png",
-    location: { lat: 11.4333, lng: 104.9333 },
+    mapUrl: "https://maps.app.goo.gl/KtwzA5PXxKC8GHTo6?g_st=com.google.maps.preview.copy",
   },
   {
     name: "Botanico Brewing Company",
     description:
       "One of the oldest breweries in Phnom Penh, creating beers with local ingredients.",
     image: "/images/botanico.png",
-    location: { lat: 11.5655, lng: 104.916 },
+    mapUrl: "https://maps.app.goo.gl/bmEnWU2s7zjzXjJo7?g_st=com.google.maps.preview.copy",
   },
   {
     name: "Riel Brewing and Distilling",
     description:
       "Pioneers in Cambodia's craft beer scene with creative, high-quality recipes.",
     image: "/images/rielbrewing.png",
-    location: { lat: 11.5621, lng: 104.9166 },
+    mapUrl: "https://maps.app.goo.gl/jGDEpbm6E7giodE58?g_st=com.google.maps.preview.copy",
   },
   {
     name: "Fuzzy Logic",
     description:
       "Established in 2014, known for balanced beers like Thunderslap IPA & John Lemon.",
     image: "/images/fuzzylogic.png",
-    location: { lat: 11.5659, lng: 104.919 },
+    mapUrl: "https://goo.gl/maps/8hEibY9S4oFX1gHb9", // Keep example link or update if you have a real one
   },
   {
     name: "Chug Lab",
     description:
       "Nano brewery in Phnom Penh, heavy metal-themed tap house in BKK3.",
     image: "/images/chuglab.png",
-    location: { lat: 11.57, lng: 104.927 },
+    mapUrl: "https://maps.app.goo.gl/Qi3sqcxEiUuq8RRU6?g_st=com.google.maps.preview.copy",
   },
   {
     name: "Brew Khnear",
     description:
       "Focused on work/life balance with solid and creative beers using traditional methods.",
     image: "/images/brewkhnear.png",
-    location: { lat: 11.565, lng: 104.92 },
+    mapUrl: "https://goo.gl/maps/ybXN6WmGcDHK4jEZ9", // Example link, replace if you want
   },
   {
     name: "Funghi Art",
     description:
       "Innovating Cambodian rice fermentation into beers, sake, shochu, and gin.",
     image: "/images/funghiart.png",
-    location: { lat: 11.563, lng: 104.918 },
+    mapUrl: "https://maps.app.goo.gl/zJoutcHWooq9VyHt7?g_st=com.google.maps.preview.copy",
   },
   {
     name: "Jaya-Vara Meadery",
     description:
       "Crafting unique meads & beers with local ingredients for the past 3 years.",
     image: "/images/jayavara.png",
-    location: { lat: 11.564, lng: 104.917 },
+    mapUrl: "https://goo.gl/maps/8mNYhC6RYQ7qA2wC7", // Example link, update if you want
   },
   {
     name: "Krama Craft Brewery",
     description:
       "Siem Reap brewery blending Cambodian ingredients with creative brewing.",
     image: "/images/kramacraft.png",
-    location: { lat: 13.3633, lng: 103.86 },
+    mapUrl: "https://maps.app.goo.gl/i7d3uRnC9BjYizsp9?g_st=com.google.maps.preview.copy",
   },
 ];
 
@@ -127,7 +127,7 @@ export default function BreweriesPage() {
                 <p className="text-gray-600 mb-4">{brewery.description}</p>
 
                 <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${brewery.location.lat},${brewery.location.lng}`}
+                  href={brewery.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2 rounded-lg shadow-md transition-colors self-start"

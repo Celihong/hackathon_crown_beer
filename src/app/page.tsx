@@ -54,19 +54,13 @@ export default function HomePage() {
 
               {/* CTA */}
               <div className="flex gap-4 mt-2 flex-wrap">
-                <Link
-                  href="/vote"
+                <a
+                  href="https://forms.gle/LPZFNjGQymjVju8B8"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105"
                 >
                   🍺 VOTE NOW
-                </Link>
-                <a
-                  href="https://maps.app.goo.gl/onsMN6tG4baUGj4S9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white border border-green-600 text-green-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-green-50 transition-transform hover:scale-105"
-                >
-                  📍 View Location
                 </a>
               </div>
             </div>
